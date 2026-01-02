@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from "react";
 import { TiHome } from "react-icons/ti";
 import { RiLogoutBoxFill } from "react-icons/ri";
@@ -9,70 +10,96 @@ import { IoPersonAddSharp } from "react-icons/io5";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Context } from "../main";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./Sidebar.css";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
-
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleLogout = async () => {
-    await axios
-      .get("http://localhost:4000/api/v1/user/admin/logout", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        toast.success(res.data.message);
-        setIsAuthenticated(false);
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message);
-      });
+  const logout = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:4000/api/v1/user/admin/logout",
+        { withCredentials: true }
+      );
+      toast.success(res.data.message);
+      setIsAuthenticated(false);
+    } catch (err) {
+      toast.error(err.response.data.message);
+    }
   };
 
-  const navigateTo = useNavigate();
+  const go = (path) => {
+    navigate(path);
+    setShow(false);
+  };
 
-  const gotoHomePage = () => {
-    navigateTo("/");
-    setShow(!show);
-  };
-  const gotoDoctorsPage = () => {
-    navigateTo("/doctors");
-    setShow(!show);
-  };
-  const gotoMessagesPage = () => {
-    navigateTo("/messages");
-    setShow(!show);
-  };
-  const gotoAddNewDoctor = () => {
-    navigateTo("/doctor/addnew");
-    setShow(!show);
-  };
-  const gotoAddNewAdmin = () => {
-    navigateTo("/admin/addnew");
-    setShow(!show);
-  };
+  if (!isAuthenticated) return null;
 
   return (
     <>
-      <nav
-        style={!isAuthenticated ? { display: "none" } : { display: "flex" }}
-        className={show ? "show sidebar" : "sidebar"}
-      >
-        <div className="links">
-          <TiHome onClick={gotoHomePage} />
-          <FaUserDoctor onClick={gotoDoctorsPage} />
-          <MdAddModerator onClick={gotoAddNewAdmin} />
-          <IoPersonAddSharp onClick={gotoAddNewDoctor} />
-          <AiFillMessage onClick={gotoMessagesPage} />
-          <RiLogoutBoxFill onClick={handleLogout} />
+      <aside className={show ? "sidebar open" : "sidebar"}>
+        <h2 className="logo">ZEECARE</h2>
+
+        <div className="menu">
+          <div
+            className={location.pathname === "/" ? "item active" : "item"}
+            onClick={() => go("/")}
+          >
+            <TiHome />
+            <span>Dashboard</span>
+          </div>
+
+          <div
+            className={location.pathname === "/doctors" ? "item active" : "item"}
+            onClick={() => go("/doctors")}
+          >
+            <FaUserDoctor />
+            <span>Doctors</span>
+          </div>
+
+          <div
+            className={
+              location.pathname === "/admin/addnew" ? "item active" : "item"
+            }
+            onClick={() => go("/admin/addnew")}
+          >
+            <MdAddModerator />
+            <span>Add Admin</span>
+          </div>
+
+          <div
+            className={
+              location.pathname === "/doctor/addnew" ? "item active" : "item"
+            }
+            onClick={() => go("/doctor/addnew")}
+          >
+            <IoPersonAddSharp />
+            <span>Add Doctor</span>
+          </div>
+
+          <div
+            className={
+              location.pathname === "/messages" ? "item active" : "item"
+            }
+            onClick={() => go("/messages")}
+          >
+            <AiFillMessage />
+            <span>Messages</span>
+          </div>
+
+          <div className="item logout" onClick={logout}>
+            <RiLogoutBoxFill />
+            <span>Logout</span>
+          </div>
         </div>
-      </nav>
-      <div
-        className="wrapper"
-        style={!isAuthenticated ? { display: "none" } : { display: "flex" }}
-      >
-        <GiHamburgerMenu className="hamburger" onClick={() => setShow(!show)} />
+      </aside>
+
+      <div className="mobile-toggle">
+        <GiHamburgerMenu onClick={() => setShow(!show)} />
       </div>
     </>
   );

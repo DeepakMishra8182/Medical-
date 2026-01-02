@@ -1,0 +1,65 @@
+
+.messages-page {
+  padding: 30px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.messages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.message-card {
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-header h3 {
+  font-size: 16px;
+}
+
+.message-header span {
+  font-size: 13px;
+  color: gray;
+}
+
+.email {
+  font-size: 14px;
+  color: #4f46e5;
+  margin: 5px 0 10px;
+}
+
+.message-body {
+  background: #f4f6ff;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.no-data {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .messages-page {
+    padding: 15px;
+  }
+}

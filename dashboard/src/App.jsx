@@ -42,18 +42,36 @@ const App = () => {
   }, [isAuthenticated]);
 
   return (
+    // <Router>
+    //   <Sidebar />
+    //   <Routes>
+    //     <Route path="/" element={<Dashboard />} />
+    //     <Route path="/login" element={<Login />} />
+    //     <Route path="/doctor/addnew" element={<AddNewDoctor />} />
+    //     <Route path="/admin/addnew" element={<AddNewAdmin />} />
+    //     <Route path="/messages" element={<Messages />} />
+    //     <Route path="/doctors" element={<Doctors />} />
+    //   </Routes>
+    //   <ToastContainer position="top-center" />
+    // </Router>
+
+
     <Router>
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/doctor/addnew" element={<AddNewDoctor />} />
-        <Route path="/admin/addnew" element={<AddNewAdmin />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/doctors" element={<Doctors />} />
-      </Routes>
-      <ToastContainer position="top-center" />
-    </Router>
+  {isAuthenticated && <Sidebar />}
+
+  <div className={isAuthenticated ? "main-content" : ""}>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
+      <Route path="/doctor/addnew" element={<AddNewDoctor />} />
+      <Route path="/admin/addnew" element={<AddNewAdmin />} />
+      <Route path="/messages" element={<Messages />} />
+      <Route path="/doctors" element={<Doctors />} />
+    </Routes>
+  </div>
+
+  <ToastContainer position="top-center" />
+</Router>
   );
 };
 

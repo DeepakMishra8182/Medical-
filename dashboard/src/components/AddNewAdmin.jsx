@@ -3,6 +3,7 @@ import { Context } from "../main";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import "./AddNewAdmin.css";
 
 const AddNewAdmin = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -21,105 +22,58 @@ const AddNewAdmin = () => {
   const handleAddNewAdmin = async (e) => {
     e.preventDefault();
     try {
-      await axios
-        .post(
-          "http://localhost:4000/api/v1/user/admin/addnew",
-          { firstName, lastName, email, phone, aadhaar, dob, gender, password },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
-        )
-        .then((res) => {
-          toast.success(res.data.message);
-          setIsAuthenticated(true);
-          navigateTo("/");
-          setFirstName("");
-          setLastName("");
-          setEmail("");
-          setPhone("");
-          setAadhaar("");
-          setDob("");
-          setGender("");
-          setPassword("");
-        });
+      const { data } = await axios.post(
+        "http://localhost:4000/api/v1/user/admin/addnew",
+        { firstName, lastName, email, phone, aadhaar, dob, gender, password },
+        { withCredentials: true }
+      );
+      toast.success(data.message);
+      setIsAuthenticated(true);
+      navigateTo("/");
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if (!isAuthenticated) {
-    return <Navigate to={"/login"} />;
-  }
+  if (!isAuthenticated) return <Navigate to="/login" />;
 
   return (
-    <section className="page" style={{background:"#bfb5ff"}}>
-      <section className="container form-component add-admin-form">
-      <img src="/logo.png" alt="logo" className="logo"/>
-        <h1 className="form-title">ADD NEW ADMIN</h1>
+    <section className="admin-page">
+      <div className="admin-form-card">
+        <img src="/logo.png" alt="logo" className="admin-logo" />
+        <h2>Add New Admin</h2>
+
         <form onSubmit={handleAddNewAdmin}>
-          <div>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
+          <div className="row">
+            <input placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <input placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Mobile Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
+
+          <div className="row">
+            <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input placeholder="Mobile Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
-          <div>
-            <input
-              type="number"
-              placeholder="aadhaar"
-              value={aadhaar}
-              onChange={(e) => setAadhaar(e.target.value)}
-            />
-            <input
-              type={"date"}
-              placeholder="Date of Birth"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
-            />
+
+          <div className="row">
+            <input placeholder="Aadhaar" value={aadhaar} onChange={(e) => setAadhaar(e.target.value)} />
+            <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
           </div>
-          <div>
+
+          <div className="row">
             <select value={gender} onChange={(e) => setGender(e.target.value)}>
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
-          <div style={{ justifyContent: "center", alignItems: "center" }}>
-            <button type="submit">ADD NEW ADMIN</button>
-          </div>
+
+          <button type="submit">Create Admin</button>
         </form>
-      </section>
+      </div>
     </section>
   );
 };
 
 export default AddNewAdmin;
+

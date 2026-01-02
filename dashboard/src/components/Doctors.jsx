@@ -3,10 +3,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import { Navigate } from "react-router-dom";
+import "./Doctors.css";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
   const { isAuthenticated } = useContext(Context);
+
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
@@ -22,47 +24,35 @@ const Doctors = () => {
     fetchDoctors();
   }, []);
 
-  if (!isAuthenticated) {
-    return <Navigate to={"/login"} />;
-  }
+  if (!isAuthenticated) return <Navigate to="/login" />;
+
   return (
-    <section className="page doctors" style={{background:"#bfb5ff"}}>
-      <h1>DOCTORS</h1>
-      <div className="banner">
-        {doctors && doctors.length > 0 ? (
-          doctors.map((element) => {
-            return (
-              <div className="card">
-                <img
-                  src={element.docAvatar && element.docAvatar.url}
-                  alt="doctor avatar"
-                />
-                <h4>{`${element.firstName} ${element.lastName}`}</h4>
-                <div className="details">
-                  <p>
-                    Email: <span>{element.email}</span>
-                  </p>
-                  <p>
-                    Phone: <span>{element.phone}</span>
-                  </p>
-                  <p>
-                    DOB: <span>{element.dob.substring(0, 10)}</span>
-                  </p>
-                  <p>
-                    Department: <span>{element.doctorDepartment}</span>
-                  </p>
-                  <p>
-                    Aadhaar: <span>{element.aadhaar}</span>
-                  </p>
-                  <p>
-                    Gender: <span>{element.gender}</span>
-                  </p>
-                </div>
+    <section className="doctors-page">
+      <h1 className="page-title">Doctors</h1>
+
+      <div className="doctors-grid">
+        {doctors.length > 0 ? (
+          doctors.map((doc) => (
+            <div className="doctor-card" key={doc._id}>
+              <img
+                src={doc.docAvatar?.url || "/doctor.png"}
+                alt="doctor"
+              />
+
+              <h3>{doc.firstName} {doc.lastName}</h3>
+              <p className="department">{doc.doctorDepartment}</p>
+
+              <div className="doctor-info">
+                <p>Email: <span>{doc.email}</span></p>
+                <p>Phone: <span>{doc.phone}</span></p>
+                <p>DOB: <span>{doc.dob.substring(0, 10)}</span></p>
+                <p>Gender: <span>{doc.gender}</span></p>
+                <p>Aadhaar: <span>{doc.aadhaar}</span></p>
               </div>
-            );
-          })
+            </div>
+          ))
         ) : (
-          <h1>No Registered Doctors Found!</h1>
+          <p className="no-data">No Registered Doctors Found</p>
         )}
       </div>
     </section>
