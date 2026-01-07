@@ -7,12 +7,7 @@ import Departments from "../components/Departments";
 const Home = () => {
   return (
     <>
-      <Hero
-        title={
-          "Welcome to ZeeCare Medical Institute | Your Trusted Healthcare Provider"
-        }
-        imageUrl={"/hero.png"}
-      />
+      <Hero/>
       <Biography imageUrl={"/about.png"} />
       <Departments />
       <MessageForm />

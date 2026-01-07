@@ -5,13 +5,35 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
+/* body {
   min-height: 100vh;
   background: linear-gradient(135deg, #6c63ff, #4b47cc);
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+
+.login-wrapper {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #6c63ff, #4b47cc);
 }
+
+
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6c63ff, #4b47cc);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .container {
   width: 100%;
@@ -28,9 +50,12 @@ body {
   align-items: center;
 }
 
-.logo {
+.mainlogo {
   width: 90px;
+  font-size: 30px;
+  font-weight: 500;
   margin-bottom: 16px;
+  color: orange;
 }
 
 .form-title {

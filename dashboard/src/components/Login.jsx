@@ -42,39 +42,38 @@ const Login = () => {
   if (isAuthenticated) {
     return <Navigate to={"/"} />;
   }
-
   return (
-    <>
-      <section className="container form-component">
-        <img src="/logo.png" alt="logo" className="logo" />
-        <h1 className="form-title">WELCOME TO ZEECARE</h1>
-        <p>Only Admins Are Allowed To Access These Resources!</p>
-        <form onSubmit={handleLogin}>
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <div style={{ justifyContent: "center", alignItems: "center" }}>
-            <button type="submit">Login</button>
-          </div>
-        </form>
-      </section>
-    </>
-  );
+  <div className="login-wrapper">
+    <section className="container form-component">
+      <h className="mainlogo">MediStack</h>
+      <h1 className="form-title">WELCOME TO MediStack</h1>
+      <p>Only Admins Are Allowed To Access These Resources!</p>
+
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
+    </section>
+  </div>
+);
+
 };
 
 export default Login;

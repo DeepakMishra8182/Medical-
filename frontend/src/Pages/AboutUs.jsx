@@ -1,14 +1,12 @@
 import React from "react";
-import Hero from "../components/Hero";
-import Biography from "../components/Biography";
+import AboutPlatform from "../components/AboutPlatform";
+import AboutFeatures from "../components/AboutFeatures";
+
 const AboutUs = () => {
   return (
     <>
-      <Hero
-        title={"Learn More About Us | ZeeCare Medical Institute"}
-        imageUrl={"/about.png"}
-      />
-      <Biography imageUrl={"/whoweare.png"} />
+      <AboutPlatform />
+      <AboutFeatures />
     </>
   );
 };

@@ -1,4 +1,4 @@
-
+/* 
 .messages-page {
   padding: 30px;
 }
@@ -59,6 +59,110 @@
 }
 
 @media (max-width: 600px) {
+  .messages-page {
+    padding: 15px;
+  }
+} */
+
+
+
+
+.messages-page {
+  padding: 30px;
+  background: #f9fafb;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Grid Layout */
+.messages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Desktop: 3 cards */
+  gap: 25px;
+}
+
+/* Message Card */
+.message-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.message-header h3 {
+  font-size: 17px;
+  color: #111827;
+  margin: 0;
+}
+
+.message-header span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Email */
+.email {
+  font-size: 14px;
+  color: #6366f1;
+  margin-bottom: 12px;
+  word-break: break-all;
+}
+
+/* Message Body */
+.message-body {
+  background: #f3f4f6;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.message-body p {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* No Data */
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #6b7280;
+  grid-column: 1 / -1;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .messages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .messages-grid {
+    grid-template-columns: 1fr;
+  }
+
   .messages-page {
     padding: 15px;
   }

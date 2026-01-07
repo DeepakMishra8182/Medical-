@@ -40,7 +40,7 @@ const AddNewAdmin = () => {
   return (
     <section className="admin-page">
       <div className="admin-form-card">
-        <img src="/logo.png" alt="logo" className="admin-logo" />
+        <h1 className="admin-logo">MediStack</h1>
         <h2>Add New Admin</h2>
 
         <form onSubmit={handleAddNewAdmin}>

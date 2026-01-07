@@ -27,8 +27,8 @@ const appointmentSchema = new mongoose.Schema({
   aadhaar: {
     type: String,
     required: [true, "aadhaar Is Required!"],
-    minLength: [13, "aadhaar Must Contain Only 13 Digits!"],
-    maxLength: [13, "aadhaar Must Contain Only 13 Digits!"],
+    minLength: [12, "aadhaar Must Contain Only 12 Digits!"],
+    maxLength: [12, "aadhaar Must Contain Only 12 Digits!"],
   },
   dob: {
     type: Date,

@@ -15,9 +15,10 @@
 }
 
 .admin-logo {
-  width: 70px;
+  width: 160px;
   display: block;
   margin: 0 auto 15px;
+  color: orange;
 }
 
 .admin-form-card h2 {

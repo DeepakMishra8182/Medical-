@@ -42,7 +42,7 @@ const Sidebar = () => {
   return (
     <>
       <aside className={show ? "sidebar open" : "sidebar"}>
-        <h2 className="logo">ZEECARE</h2>
+        <h2 className="logo">MediStack</h2>
 
         <div className="menu">
           <div

@@ -1,67 +1,91 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Context } from "../main";
+import './Navbar.css'
 
 const Navbar = () => {
-  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await axios
-      .get("http://localhost:4000/api/v1/user/patient/logout", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        toast.success(res.data.message);
-        setIsAuthenticated(false);
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message);
-      });
-  };
-
-  const navigateTo = useNavigate();
-
-  const goToLogin = () => {
-    navigateTo("/login");
+    try {
+      const res = await axios.get(
+        "http://localhost:4000/api/v1/user/patient/logout",
+        { withCredentials: true }
+      );
+      toast.success(res.data.message);
+      setIsAuthenticated(false);
+    } catch (err) {
+      toast.error(err?.response?.data?.message);
+    }
   };
 
   return (
-    <>
-      <nav className={"container"}>
-        <div className="logo">
-          <img src="/logo.png" alt="logo" className="logo-img" />
+    <header className="navbar">
+      <div className="navbar-inner">
+
+        <div className="navbar-logo">
+          <h1>MediStack</h1>
         </div>
-        <div className={show ? "navLinks showmenu" : "navLinks"}>
-          <div className="links">
-            <Link to={"/"} onClick={() => setShow(!show)}>
+        <ul className={`navbar-links ${open ? "show" : ""}`}>
+          <li>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) => (isActive ? "active" : "")}
+              onClick={() => setOpen(false)}
+            >
               Home
-            </Link>
-            <Link to={"/appointment"} onClick={() => setShow(!show)}>
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/appointment"
+              className={({ isActive }) => (isActive ? "active" : "")}
+              onClick={() => setOpen(false)}
+            >
               Appointment
-            </Link>
-            <Link to={"/about"} onClick={() => setShow(!show)}>
-              About Us
-            </Link>
-          </div>
-          {isAuthenticated ? (
-            <button className="logoutBtn btn" onClick={handleLogout}>
-              LOGOUT
-            </button>
-          ) : (
-            <button className="loginBtn btn" onClick={goToLogin}>
-              LOGIN
-            </button>
-          )}
-        </div>
-        <div className="hamburger" onClick={() => setShow(!show)}>
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? "active" : "")}
+              onClick={() => setOpen(false)}
+            >
+              About
+            </NavLink>
+          </li>
+
+          <li className="auth-btn">
+            {isAuthenticated ? (
+              <button onClick={handleLogout} className="logout-btn">
+                Logout
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  navigate("/login");
+                }}
+                className="login-btn"
+              >
+                Login
+              </button>
+            )}
+          </li>
+        </ul>
+        <div className="hamburger" onClick={() => setOpen(!open)}>
           <GiHamburgerMenu />
         </div>
-      </nav>
-    </>
+      </div>
+    </header>
   );
 };
 

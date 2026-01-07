@@ -190,7 +190,7 @@ const Dashboard = () => {
   if (!isAuthenticated) return <Navigate to="/login" />;
 
   return (
-    <div className="main-content">
+    <div className="content">
       <section className="dashboard-page">
         <div className="dashboard-header">
           <div className="welcome-card">

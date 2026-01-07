@@ -78,7 +78,7 @@ const AddNewDoctor = () => {
   return (
     <section className="doctor-page">
       <div className="doctor-card">
-        <img src="/logo.png" className="doctor-logo" alt="logo" />
+        <h1 className="doctor-logo">MediStack</h1>
         <h2>Register New Doctor</h2>
 
         <form onSubmit={handleAddNewDoctor}>
