@@ -19,7 +19,7 @@ import AddNewAdmin from "./components/AddNewAdmin";
 import "./App.css";
 
 const App = () => {
-  const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
+  const { isAuthenticated, setIsAuthenticated, admin, setAdmin,loading,setLoading } =
     useContext(Context);
 
   useEffect(() => {
@@ -36,11 +36,16 @@ const App = () => {
       } catch (error) {
         setIsAuthenticated(false);
         setAdmin({});
+      }finally{
+        setLoading(false)
       }
     };
     fetchUser();
-  }, [isAuthenticated]);
+  }, []);
 
+  if (loading) {
+  return null; 
+  }
   return (
     <Router>
   {isAuthenticated && <Sidebar />}
