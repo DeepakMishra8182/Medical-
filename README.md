@@ -57,7 +57,4 @@ This project provides separate panels for **Admin, Doctors, and Patients** with 
 - Backend: **Vercel (Serverless)**
 - Database: **MongoDB Atlas**
 
----
-
-## 📂 Project Structure
 
