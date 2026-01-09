@@ -11,8 +11,8 @@ import appointmentRouter from "./router/appointmentRouter.js";
 const app = express();
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL,
-  process.env.DASHBOARD_URL,
+   "https://hospitalmanagementmain.vercel.app",
+  "https://hospitalmanagementfrontend-nine.vercel.app",
 ];
 
 app.use(
