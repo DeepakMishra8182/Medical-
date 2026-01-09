@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./Dashboard.css";
-import { BACKEND_URL } from "../utils/config.js";
 
 const Dashboard = () => {
   const [appointments, setAppointments] = useState([]);
@@ -16,7 +15,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
       try {
         const { data } = await axios.get(
-         `${BACKEND_URL}/api/v1/appointment/getall`,
+         `https://hospitalmanagement-mocha.vercel.app/api/v1/appointment/getall`,
           { withCredentials: true }
         );
         setAppointments(data.appointments);
@@ -30,7 +29,7 @@ const Dashboard = () => {
   const handleUpdateStatus = async (id, status) => {
     try {
       const { data } = await axios.put(
-        `${BACKEND_URL}/api/v1/appointment/update/${id}`,
+        `https://hospitalmanagement-mocha.vercel.app/api/v1/appointment/update/${id}`,
         { status },
         { withCredentials: true }
       );

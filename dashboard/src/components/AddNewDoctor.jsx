@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import axios from "axios";
 import "./AddNewDoctor.css";
-import { BACKEND_URL } from "../utils/config.js";
 
 const AddNewDoctor = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -61,7 +60,7 @@ const AddNewDoctor = () => {
       formData.append("docAvatar", docAvatar);
 
       const { data } = await axios.post(
-        `${BACKEND_URL}/api/v1/user/doctor/addnew`,
+        `https://hospitalmanagement-mocha.vercel.app/api/v1/user/doctor/addnew`,
         formData,
         { withCredentials: true }
       );

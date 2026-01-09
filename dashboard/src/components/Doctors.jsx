@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import { Navigate } from "react-router-dom";
 import "./Doctors.css";
-import { BACKEND_URL } from "../utils/config.js";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -14,7 +13,7 @@ const Doctors = () => {
     const fetchDoctors = async () => {
       try {
         const { data } = await axios.get(
-          `${BACKEND_URL}/api/v1/user/doctors`,
+          `https://hospitalmanagement-mocha.vercel.app/api/v1/user/doctors`,
           { withCredentials: true }
         );
         setDoctors(data.doctors);

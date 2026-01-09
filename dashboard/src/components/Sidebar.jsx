@@ -12,7 +12,6 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
-import { BACKEND_URL } from "../utils/config.js";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
@@ -23,7 +22,7 @@ const Sidebar = () => {
   const logout = async () => {
     try {
       const res = await axios.get(
-        `${BACKEND_URL}/api/v1/user/admin/logout`,
+        `https://hospitalmanagement-mocha.vercel.app/api/v1/user/admin/logout`,
         { withCredentials: true }
       );
       toast.success(res.data.message);

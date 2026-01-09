@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import axios from "axios";
 import './Login.css'
-import { BACKEND_URL } from "../utils/config.js";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +19,7 @@ const Login = () => {
     try {
       await axios
         .post(
-          `${BACKEND_URL}/api/v1/user/login`,
+          `https://hospitalmanagement-mocha.vercel.app/api/v1/user/login`,
           { email, password, confirmPassword, role: "Admin" },
           {
             withCredentials: true,

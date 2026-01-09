@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./AddNewAdmin.css";
-import { BACKEND_URL } from "../utils/config.js";
+
 
 const AddNewAdmin = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -24,7 +24,7 @@ const AddNewAdmin = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `${BACKEND_URL}/api/v1/user/admin/addnew`,
+        `https://hospitalmanagement-mocha.vercel.app/api/v1/user/admin/addnew`,
         { firstName, lastName, email, phone, aadhaar, dob, gender, password },
         { withCredentials: true }
       );

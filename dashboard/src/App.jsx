@@ -17,7 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "./components/Sidebar";
 import AddNewAdmin from "./components/AddNewAdmin";
 import "./App.css";
-import { BACKEND_URL } from "./utils/config.js";
 
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
@@ -27,7 +26,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-         `${BACKEND_URL}/api/v1/user/admin/me`,
+         `https://hospitalmanagement-mocha.vercel.app/api/v1/user/admin/me`,
           {
             withCredentials: true,
           }
