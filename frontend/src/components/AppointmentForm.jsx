@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "./AppointmentForm.css";
-import { BACKEND_URL } from "../../../dashboard/src/utils/config";
+import { BACKEND_URL } from "../utils/config";
 
 
 const AppointmentForm = () => {

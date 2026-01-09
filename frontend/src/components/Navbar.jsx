@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import './Navbar.css'
-import { BACKEND_URL } from "../../../dashboard/src/utils/config";
+import { BACKEND_URL } from "../utils/config";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);

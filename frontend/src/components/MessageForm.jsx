@@ -5,7 +5,7 @@ import { Context } from "../main";
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import './MessageForm.css'
 import { useContext } from "react";
-import { BACKEND_URL } from "../../../dashboard/src/utils/config";
+import { BACKEND_URL } from "../utils/config";
 
 const MessageForm = () => {
   const [firstName, setFirstName] = useState("");
