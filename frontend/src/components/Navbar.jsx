@@ -5,7 +5,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import './Navbar.css'
-import { BACKEND_URL } from "../utils/config";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -15,7 +14,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const res = await axios.get(
-        `${BACKEND_URL}/api/v1/user/patient/logout`,
+        `https://hospitalmanagement-mocha.vercel.app/api/v1/user/patient/logout`,
         { withCredentials: true }
       );
       toast.success(res.data.message);

@@ -5,7 +5,6 @@ import { Context } from "../main";
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import './MessageForm.css'
 import { useContext } from "react";
-import { BACKEND_URL } from "../utils/config";
 
 const MessageForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -33,7 +32,7 @@ const MessageForm = () => {
 
     try {
       const res = await axios.post(
-     `${BACKEND_URL}/api/v1/message/send`,
+     `https://hospitalmanagement-mocha.vercel.app/api/v1/message/send`,
         { firstName, lastName, email, phone, message },
         {
           withCredentials: true,

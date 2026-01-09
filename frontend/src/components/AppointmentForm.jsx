@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "./AppointmentForm.css";
-import { BACKEND_URL } from "../utils/config";
 
 
 const AppointmentForm = () => {
@@ -36,7 +35,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       const { data } = await axios.get(
-       `${BACKEND_URL}/api/v1/user/doctors`,
+       `https://hospitalmanagement-mocha.vercel.app/api/v1/user/doctors`,
         { withCredentials: true }
       );
       setDoctors(data.doctors);
