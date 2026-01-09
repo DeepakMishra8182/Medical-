@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../main";
 import { Navigate } from "react-router-dom";
 import "./Messages.css";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);

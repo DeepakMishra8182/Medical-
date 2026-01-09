@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./Dashboard.css";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 const Dashboard = () => {
   const [appointments, setAppointments] = useState([]);

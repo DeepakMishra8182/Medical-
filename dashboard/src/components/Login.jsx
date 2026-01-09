@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import axios from "axios";
 import './Login.css'
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 const Login = () => {
   const [email, setEmail] = useState("");

@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);

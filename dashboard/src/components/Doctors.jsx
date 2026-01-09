@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import { Navigate } from "react-router-dom";
 import "./Doctors.css";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);

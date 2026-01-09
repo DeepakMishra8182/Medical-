@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./AddNewAdmin.css";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 const AddNewAdmin = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);

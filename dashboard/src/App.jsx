@@ -17,7 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "./components/Sidebar";
 import AddNewAdmin from "./components/AddNewAdmin";
 import "./App.css";
-import { BACKEND_URL } from "./utils/config";
+import { BACKEND_URL } from "./utils/config.js";
 
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import axios from "axios";
 import "./AddNewDoctor.css";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 const AddNewDoctor = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
