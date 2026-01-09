@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./AddNewAdmin.css";
+import { BACKEND_URL } from "../utils/config";
 
 const AddNewAdmin = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -23,7 +24,7 @@ const AddNewAdmin = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/admin/addnew",
+        `${BACKEND_URL}/api/v1/user/admin/addnew`,
         { firstName, lastName, email, phone, aadhaar, dob, gender, password },
         { withCredentials: true }
       );

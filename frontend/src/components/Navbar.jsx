@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import './Navbar.css'
+import { BACKEND_URL } from "../../../dashboard/src/utils/config";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4000/api/v1/user/patient/logout",
+        `${BACKEND_URL}/api/v1/user/patient/logout`,
         { withCredentials: true }
       );
       toast.success(res.data.message);

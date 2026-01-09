@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
+import { BACKEND_URL } from "../utils/config";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
@@ -22,7 +23,7 @@ const Sidebar = () => {
   const logout = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4000/api/v1/user/admin/logout",
+        `${BACKEND_URL}/api/v1/user/admin/logout`,
         { withCredentials: true }
       );
       toast.success(res.data.message);

@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import './Register.css'
+import { BACKEND_URL } from "../../../dashboard/src/utils/config";
 
 const Register = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -24,7 +25,7 @@ const Register = () => {
     try {
       await axios
         .post(
-          "http://localhost:4000/api/v1/user/patient/register",
+      `${BACKEND_URL}/api/v1/user/patient/register`,
           { firstName, lastName, email, phone, aadhaar, dob, gender, password },
           {
             withCredentials: true,

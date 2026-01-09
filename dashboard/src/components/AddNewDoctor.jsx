@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { Context } from "../main";
 import axios from "axios";
 import "./AddNewDoctor.css";
+import { BACKEND_URL } from "../utils/config";
 
 const AddNewDoctor = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -60,7 +61,7 @@ const AddNewDoctor = () => {
       formData.append("docAvatar", docAvatar);
 
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/doctor/addnew",
+        `${BACKEND_URL}/api/v1/user/doctor/addnew`,
         formData,
         { withCredentials: true }
       );

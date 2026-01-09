@@ -5,6 +5,7 @@ import { Context } from "../main";
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import './MessageForm.css'
 import { useContext } from "react";
+import { BACKEND_URL } from "../../../dashboard/src/utils/config";
 
 const MessageForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -32,7 +33,7 @@ const MessageForm = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/message/send",
+     `${BACKEND_URL}/api/v1/message/send`,
         { firstName, lastName, email, phone, message },
         {
           withCredentials: true,
